@@ -32,7 +32,10 @@ public class Property {
     }
 
     public double calculateTotalSquareMeters(){
-        return roomsList.stream().mapToDouble(Room::getSquareMeters).sum();
+        return roomsList
+                .stream()
+                .mapToDouble(Room::getSquareMeters)
+                .sum();
     }
 
     public double calculateValue(){
@@ -42,6 +45,9 @@ public class Property {
     }
 
     public Room getBiggestRoom(){
-        return roomsList.stream().max(Comparator.comparing(Room::getSquareMeters)).get();
+        return roomsList
+                .stream()
+                .max(Comparator.comparing(Room::getSquareMeters))
+                .get();
     }
 }

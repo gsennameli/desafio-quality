@@ -1,9 +1,6 @@
 package com.example.desafioQuality.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.*;
 
@@ -11,6 +8,7 @@ import javax.validation.constraints.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Room {
 
     @NotNull(message = "O campo não pode estar vazio.")
