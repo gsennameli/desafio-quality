@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @AllArgsConstructor
@@ -41,5 +42,9 @@ public class Property {
         double totalSquareMeters = calculateTotalSquareMeters();
 
         return totalSquareMeters * district.getPricePerSquareMeter();
+    }
+
+    public Room getBiggestRoom(){
+        return roomsList.stream().max(Comparator.comparing(Room::getSquareMeters)).get();
     }
 }

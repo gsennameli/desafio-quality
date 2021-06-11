@@ -29,4 +29,9 @@ public class PropertyController {
     public ResponseEntity getPropertyValue(@Valid @RequestBody PropertyDTO propertyDTO){
         return new ResponseEntity(propertyService.getPropertyValue(propertyDTO),HttpStatus.OK);
     }
+
+    @PostMapping("/biggestRoom")
+    public ResponseEntity getBiggestRoom(@Valid @RequestBody PropertyDTO propertyDTO){
+        return new ResponseEntity(propertyService.getBiggestRoom(propertyDTO),HttpStatus.OK);
+    }
 }
