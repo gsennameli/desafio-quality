@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Getter
 @Setter
@@ -17,6 +14,7 @@ import javax.validation.constraints.Size;
 public class Room {
 
     @NotNull(message = "O campo não pode estar vazio.")
+    @NotBlank(message = "O campo não pode estar vazio.")
     @Size(max = 30,message = "O comprimento do cômodo não pode exceder 30 caracteres.")
     @Pattern(regexp = "[A-Z][a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\\s]*",message = "O nome do cômodo deve começar com uma letra maiúscula.")
     private String name;
