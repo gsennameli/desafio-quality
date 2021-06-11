@@ -33,7 +33,13 @@ public class Property {
         this.roomsList = propertyDTO.getRoomsList();
     }
 
-    public double totalSquareMeters(){
+    public double calculateTotalSquareMeters(){
         return roomsList.stream().mapToDouble(Room::getSquareMeters).sum();
+    }
+
+    public double calculateValue(){
+        double totalSquareMeters = calculateTotalSquareMeters();
+
+        return totalSquareMeters * district.getPricePerSquareMeter();
     }
 }

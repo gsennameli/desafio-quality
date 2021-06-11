@@ -24,4 +24,9 @@ public class PropertyController {
     public ResponseEntity getPropertySize(@Valid @RequestBody PropertyDTO propertyDTO){
         return new ResponseEntity(propertyService.getTotalSquareMeters(propertyDTO), HttpStatus.OK);
     }
+
+    @PostMapping("/value")
+    public ResponseEntity getPropertyValue(@Valid @RequestBody PropertyDTO propertyDTO){
+        return new ResponseEntity(propertyService.getPropertyValue(propertyDTO),HttpStatus.OK);
+    }
 }
