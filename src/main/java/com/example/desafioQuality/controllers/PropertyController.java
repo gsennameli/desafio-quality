@@ -1,6 +1,6 @@
 package com.example.desafioQuality.controllers;
 
-import com.example.desafioQuality.dtos.PropertyDTO;
+import com.example.desafioQuality.dtos.PropertyRequest;
 import com.example.desafioQuality.models.Property;
 import com.example.desafioQuality.services.PropertyService;
 import lombok.AllArgsConstructor;
@@ -21,17 +21,22 @@ public class PropertyController {
     private final PropertyService propertyService;
 
     @PostMapping("/size")
-    public ResponseEntity getPropertySize(@Valid @RequestBody PropertyDTO propertyDTO){
-        return new ResponseEntity(propertyService.getTotalSquareMeters(propertyDTO), HttpStatus.OK);
+    public ResponseEntity getPropertySize(@Valid @RequestBody PropertyRequest propertyRequest){
+        return new ResponseEntity(propertyService.getTotalSquareMeters(propertyRequest), HttpStatus.OK);
     }
 
     @PostMapping("/value")
-    public ResponseEntity getPropertyValue(@Valid @RequestBody PropertyDTO propertyDTO){
-        return new ResponseEntity(propertyService.getPropertyValue(propertyDTO),HttpStatus.OK);
+    public ResponseEntity getPropertyValue(@Valid @RequestBody PropertyRequest propertyRequest){
+        return new ResponseEntity(propertyService.getPropertyValue(propertyRequest),HttpStatus.OK);
     }
 
     @PostMapping("/biggestRoom")
-    public ResponseEntity getBiggestRoom(@Valid @RequestBody PropertyDTO propertyDTO){
-        return new ResponseEntity(propertyService.getBiggestRoom(propertyDTO),HttpStatus.OK);
+    public ResponseEntity getBiggestRoom(@Valid @RequestBody PropertyRequest propertyRequest){
+        return new ResponseEntity(propertyService.getBiggestRoom(propertyRequest),HttpStatus.OK);
+    }
+
+    @PostMapping("rooms/sizes")
+    public ResponseEntity getSizesPerRoom(@Valid @RequestBody PropertyRequest propertyRequest){
+        return new ResponseEntity(propertyService.getSizesPerRoom(propertyRequest),HttpStatus.OK);
     }
 }

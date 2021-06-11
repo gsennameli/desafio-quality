@@ -19,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class PropertyDTO {
+public class PropertyRequest {
     @NotNull(message = "O nome da propriedade não pode estar vazio.")
     @NotBlank(message = "O nome da propriedade não pode estar vazio.")
     @Size(max = 30,message = "O comprimento do nome não pode exceder 30 caracteres.")

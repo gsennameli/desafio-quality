@@ -1,15 +1,20 @@
 package com.example.desafioQuality.services;
 
-import com.example.desafioQuality.dtos.PropertyDTO;
+import com.example.desafioQuality.dtos.PropertyRequest;
 import com.example.desafioQuality.dtos.responses.PropertyValueResponse;
 import com.example.desafioQuality.dtos.responses.PropertyTotalSquareMetersResponse;
+import com.example.desafioQuality.dtos.responses.SizesPerRoomResponse;
 import com.example.desafioQuality.models.Room;
+
+import java.util.List;
 
 public interface PropertyService {
 
-    PropertyTotalSquareMetersResponse getTotalSquareMeters(PropertyDTO propertyDTO);
+    PropertyTotalSquareMetersResponse getTotalSquareMeters(PropertyRequest propertyRequest);
 
-    PropertyValueResponse getPropertyValue(PropertyDTO propertyDTO);
+    PropertyValueResponse getPropertyValue(PropertyRequest propertyRequest);
 
-    Room getBiggestRoom(PropertyDTO propertyDTO);
+    Room getBiggestRoom(PropertyRequest propertyRequest);
+
+    List<SizesPerRoomResponse> getSizesPerRoom(PropertyRequest propertyRequest);
 }
