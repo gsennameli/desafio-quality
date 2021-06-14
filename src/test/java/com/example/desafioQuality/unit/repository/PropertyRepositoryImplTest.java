@@ -1,11 +1,14 @@
-package com.example.desafioQuality.repository;
+package com.example.desafioQuality.unit.repository;
 
 import com.example.desafioQuality.aux.AllDistricts;
 import com.example.desafioQuality.models.District;
+import com.example.desafioQuality.repository.PropertyRepositoryImpl;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
@@ -26,8 +29,8 @@ class PropertyRepositoryImplTest {
     }
 
     @Test
-    @Disabled
-    void shouldReturnException(){
+    void shouldThrowNoSuchElementException(){
 
+        assertThrows(NoSuchElementException.class,()->propertyRepository.findDistrictByName("Monteiro"));
     }
 }

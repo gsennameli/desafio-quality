@@ -1,4 +1,4 @@
-package com.example.desafioQuality.unit;
+package com.example.desafioQuality.unit.models;
 
 import com.example.desafioQuality.models.District;
 import com.example.desafioQuality.models.Property;
@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
@@ -35,7 +36,7 @@ class PropertyTest {
     }
 
     @Test
-    void calculateTotalSquareMeters() {
+    void shouldReturnPropertySize() {
         //when
         double result = property.calculateTotalSquareMeters();
 
@@ -44,7 +45,7 @@ class PropertyTest {
     }
 
     @Test
-    void calculateValue() {
+    void shouldReturnPropertyValue() {
         //when
         double result = property.calculateValue();
 
@@ -53,7 +54,7 @@ class PropertyTest {
     }
 
     @Test
-    void getBiggestRoom() {
+    void shouldReturnBiggestRoom() {
         //when
         Room result = property.getBiggestRoom();
 

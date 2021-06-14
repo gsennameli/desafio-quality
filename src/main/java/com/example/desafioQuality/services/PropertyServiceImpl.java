@@ -9,10 +9,13 @@ import com.example.desafioQuality.models.Property;
 import com.example.desafioQuality.models.Room;
 import com.example.desafioQuality.repository.PropertyRepository;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+
 
 @AllArgsConstructor
 @Service
@@ -58,8 +61,13 @@ public class PropertyServiceImpl implements PropertyService{
     }
 
     public Property getPropertyByPropertyRequest(PropertyRequest propertyRequest){
-        District district = propertyRepository.findDistrictByName(propertyRequest.getProp_district());
-        return new Property(propertyRequest,district);
+        try{
+            District district = propertyRepository.findDistrictByName(propertyRequest.getProp_district());
+            return new Property(propertyRequest,district);
+        }catch (NoSuchElementException ex){
+            throw new NoSuchElementException("Bairro não encontrado");
+        }
+
     }
 
 

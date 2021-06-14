@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
+import java.util.NoSuchElementException;
+
 @ControllerAdvice
 public class ApiExceptionControllerAdvice {
     @ExceptionHandler(value = { MethodArgumentNotValidException.class})
@@ -16,5 +18,13 @@ public class ApiExceptionControllerAdvice {
         responseBody.setMessage(ex.getFieldError().getDefaultMessage());
         responseBody.setCause(ex.getFieldError().getField());
         return new ResponseEntity<>(responseBody, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = { NoSuchElementException.class})
+    protected ResponseEntity<Object> handleDistrictNotFound(NoSuchElementException ex, WebRequest request) {
+        var responseBody = new ErrorResponseDTO();
+        responseBody.setMessage(ex.getMessage());
+        responseBody.setCause("prop_district");
+        return new ResponseEntity<>(responseBody, HttpStatus.NOT_FOUND);
     }
 }
