@@ -17,7 +17,7 @@ public interface PropertyService {
 
     Room getBiggestRoom(PropertyRequest propertyRequest);
 
-    List<SizesPerRoomResponse> getSizesPerRoom(PropertyRequest propertyRequest);
+    SizesPerRoomResponse getSizesPerRoom(PropertyRequest propertyRequest);
 
     Property getPropertyByPropertyRequest(PropertyRequest propertyRequest);
 }

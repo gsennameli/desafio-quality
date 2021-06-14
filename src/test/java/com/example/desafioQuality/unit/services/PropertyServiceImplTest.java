@@ -57,18 +57,18 @@ class PropertyServiceImplTest {
     @Test
     @Disabled
     void getSizesPerRoom() {
-        //given
-        List<SizesPerRoomResponse> expected = List.of(
-                new SizesPerRoomResponse("Cozinha",50.0),
-                new SizesPerRoomResponse("Quarto",16.0),
-                new SizesPerRoomResponse("Banheiro",10.0)
-        );
-        //when(propertyService.getPropertyByPropertyRequest(propertyRequest)).thenReturn();
-        //when
-        List<SizesPerRoomResponse> result = propertyService.getSizesPerRoom(propertyRequest);
-
-        //then
-        assertThat(result).usingRecursiveComparison().isEqualTo(expected);
+//        //given
+//        List<SizesPerRoomResponse> expected = List.of(
+//                new SizesPerRoomResponse("Cozinha",50.0),
+//                new SizesPerRoomResponse("Quarto",16.0),
+//                new SizesPerRoomResponse("Banheiro",10.0)
+//        );
+//        //when(propertyService.getPropertyByPropertyRequest(propertyRequest)).thenReturn();
+//        //when
+//        List<SizesPerRoomResponse> result = propertyService.getSizesPerRoom(propertyRequest);
+//
+//        //then
+//        assertThat(result).usingRecursiveComparison().isEqualTo(expected);
     }
 
     @Test

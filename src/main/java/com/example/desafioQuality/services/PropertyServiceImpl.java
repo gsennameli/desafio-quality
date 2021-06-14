@@ -1,6 +1,7 @@
 package com.example.desafioQuality.services;
 
 import com.example.desafioQuality.dtos.PropertyRequest;
+import com.example.desafioQuality.dtos.RoomDTO;
 import com.example.desafioQuality.dtos.responses.PropertyTotalSquareMetersResponse;
 import com.example.desafioQuality.dtos.responses.PropertyValueResponse;
 import com.example.desafioQuality.dtos.responses.SizesPerRoomResponse;
@@ -49,15 +50,15 @@ public class PropertyServiceImpl implements PropertyService{
     }
 
     @Override
-    public List<SizesPerRoomResponse> getSizesPerRoom(PropertyRequest propertyRequest) {
+    public SizesPerRoomResponse getSizesPerRoom(PropertyRequest propertyRequest) {
         Property property = getPropertyByPropertyRequest(propertyRequest);
 
-        List<SizesPerRoomResponse> roomResponsesList = new ArrayList<>();
+        SizesPerRoomResponse sizesPerRoomResponse = new SizesPerRoomResponse();
         property.getRoomsList().forEach(
-                room -> roomResponsesList.add(new SizesPerRoomResponse(room))
+                room -> sizesPerRoomResponse.getRoomsList().add(new RoomDTO(room))
         );
 
-        return  roomResponsesList;
+        return  sizesPerRoomResponse;
     }
 
     public Property getPropertyByPropertyRequest(PropertyRequest propertyRequest){
