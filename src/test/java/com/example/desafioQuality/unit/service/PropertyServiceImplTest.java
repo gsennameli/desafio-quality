@@ -96,4 +96,5 @@ class PropertyServiceImplTest {
         assertThat(result.getRoomsList()).usingRecursiveComparison().isEqualTo(propertyExist.getRoomsList());
         assertThat(result.getDistrict().getName()).isEqualTo(propertyRequest.getProp_district());
     }
+
 }

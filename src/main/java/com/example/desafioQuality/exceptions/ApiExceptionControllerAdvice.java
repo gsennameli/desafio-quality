@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 @ControllerAdvice
 public class ApiExceptionControllerAdvice {
     @ExceptionHandler(value = { MethodArgumentNotValidException.class})
-    protected ResponseEntity<Object> handleDefault(MethodArgumentNotValidException ex, WebRequest request) {
+    protected ResponseEntity<Object> handleDefault(MethodArgumentNotValidException ex) {
         var responseBody = new ErrorResponseDTO();
         responseBody.setMessage(ex.getFieldError().getDefaultMessage());
         responseBody.setCause(ex.getFieldError().getField());
@@ -21,7 +21,7 @@ public class ApiExceptionControllerAdvice {
     }
 
     @ExceptionHandler(value = { NoSuchElementException.class})
-    protected ResponseEntity<Object> handleDistrictNotFound(NoSuchElementException ex, WebRequest request) {
+    protected ResponseEntity<Object> handleDistrictNotFound(NoSuchElementException ex) {
         var responseBody = new ErrorResponseDTO();
         responseBody.setMessage(ex.getMessage());
         responseBody.setCause("prop_district");

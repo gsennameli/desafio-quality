@@ -62,13 +62,8 @@ public class PropertyServiceImpl implements PropertyService{
     }
 
     public Property getPropertyByPropertyRequest(PropertyRequest propertyRequest){
-        try{
-            District district = propertyRepository.findDistrictByName(propertyRequest.getProp_district());
-            return new Property(propertyRequest,district);
-        }catch (NoSuchElementException ex){
-            throw new NoSuchElementException("Bairro não encontrado");
-        }
-
+        District district = propertyRepository.findDistrictByName(propertyRequest.getProp_district());
+        return new Property(propertyRequest,district);
     }
 
 
