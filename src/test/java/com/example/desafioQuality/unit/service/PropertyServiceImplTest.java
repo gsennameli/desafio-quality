@@ -7,7 +7,6 @@ import com.example.desafioQuality.models.District;
 import com.example.desafioQuality.models.Property;
 import com.example.desafioQuality.models.Room;
 import com.example.desafioQuality.repository.PropertyRepositoryImpl;
-import com.example.desafioQuality.services.PropertyService;
 import com.example.desafioQuality.services.PropertyServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -18,7 +17,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.*;
@@ -26,13 +24,9 @@ import static org.mockito.Mockito.*;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.assertj.core.api.Assertions.*;
-
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 class PropertyServiceImplTest {
-    //TODO Talvez testar os métodos do service principalmente getSizerPerRoom
 
     @Mock
     PropertyRepositoryImpl propertyRepository;
@@ -68,15 +62,38 @@ class PropertyServiceImplTest {
     }
 
     @Test
+    void shouldReturnSizeOfRooms() {
+        //given
+        SizesPerRoomResponse sizesPerRoomResponse = new SizesPerRoomResponse();
+        sizesPerRoomResponse.setRoomsList(List.of(
+                new RoomDTO(kitchen),
+                new RoomDTO(bedroom),
+                new RoomDTO(bathroom)
+        ));
+        District carraoDistrict = new District("Carrao",4D);
+        Property property = new Property(propertyRequest,carraoDistrict);
+
+        doReturn(property).when(propertyService).getPropertyByPropertyRequest(propertyRequest);
+
+        //when
+        SizesPerRoomResponse result = propertyService.getSizesPerRoom(propertyRequest);
+
+        //then
+        assertThat(result.getRoomsList().get(0)).usingRecursiveComparison().isEqualTo(sizesPerRoomResponse.getRoomsList().get(0));
+        assertThat(result.getRoomsList().get(1)).usingRecursiveComparison().isEqualTo(sizesPerRoomResponse.getRoomsList().get(1));
+        assertThat(result.getRoomsList().get(2)).usingRecursiveComparison().isEqualTo(sizesPerRoomResponse.getRoomsList().get(2));
+    }
+
+    @Test
     void shouldReturnProperty() {
 
         when(propertyService.getPropertyByPropertyRequest(propertyRequest)).thenCallRealMethod();
         //when
         Property result = propertyService.getPropertyByPropertyRequest(propertyRequest);
 
+        //then
         assertThat(result.getName()).isEqualTo(propertyRequest.getName());
         assertThat(result.getRoomsList()).usingRecursiveComparison().isEqualTo(propertyExist.getRoomsList());
         assertThat(result.getDistrict().getName()).isEqualTo(propertyRequest.getProp_district());
-
     }
 }
