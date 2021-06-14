@@ -106,7 +106,6 @@ public class PropertyControllerTest {
                 .andExpect(jsonPath("$.roomsList[1].size").value(16.0))
                 .andExpect(jsonPath("$.roomsList[2].name").value("Banheiro"))
                 .andExpect(jsonPath("$.roomsList[2].size").value(10.0));
-
     }
 
 }
